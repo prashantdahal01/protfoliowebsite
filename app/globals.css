@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #121212;
+}
+
+@keyframes neon-spectrum {
+  0% {
+    --neon: 0 255 255; /* cyan */
+  }
+  33% {
+    --neon: 168 85 247; /* purple */
+  }
+  66% {
+    --neon: 236 72 153; /* pink */
+  }
+  100% {
+    --neon: 0 255 255; /* cyan */
+  }
+}
+
+.neon-cycle {
+  --neon: 0 255 255;
+  animation: neon-spectrum 3s linear infinite;
+  color: rgb(var(--neon));
+}
+
+.neon-btn {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.neon-btn:hover {
+  border-color: rgba(var(--neon), 0.55);
+  box-shadow:
+    0 0 0 1px rgba(var(--neon), 0.18) inset,
+    0 0 24px rgba(var(--neon), 0.22),
+    0 10px 34px rgba(0, 0, 0, 0.35);
+}
+
+.neon-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 1px rgba(var(--neon), 0.25) inset,
+    0 0 0 3px rgba(var(--neon), 0.22),
+    0 0 28px rgba(var(--neon), 0.22);
+}
+
+@keyframes rgb-laser-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.rgb-laser {
+  height: 2px;
+  background-image: linear-gradient(
+    90deg,
+    rgb(0 255 255),
+    rgb(168 85 247),
+    rgb(236 72 153),
+    rgb(255 180 0),
+    rgb(0 255 255)
+  );
+  background-size: 200% 100%;
+  animation: rgb-laser-pan 3s linear infinite;
+  filter: brightness(0.85) saturate(1.15);
+  opacity: 0.9;
+}
+
+.footer-laser:hover .rgb-laser {
+  filter: brightness(1.25) saturate(1.4);
+  opacity: 1;
+}
+
+.footer-laser:hover .rgb-laser-glow {
+  opacity: 1;
+}
+
+.rgb-circuit {
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    rgb(0 255 255),
+    rgb(168 85 247),
+    rgb(236 72 153),
+    rgb(0 255 255)
+  );
+  background-size: 200% 100%;
+  animation: rgb-laser-pan 4.5s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+@keyframes rgb-logo-pulse {
+  0%,
+  100% {
+    text-shadow:
+      0 0 1px rgba(255, 255, 255, 0.25),
+      0 0 18px rgba(0, 255, 255, 0.55),
+      0 0 34px rgba(168, 85, 247, 0.42),
+      0 0 52px rgba(236, 72, 153, 0.32);
+  }
+  50% {
+    text-shadow:
+      0 0 1px rgba(255, 255, 255, 0.35),
+      0 0 24px rgba(0, 255, 255, 0.75),
+      0 0 44px rgba(168, 85, 247, 0.62),
+      0 0 68px rgba(236, 72, 153, 0.48);
+  }
+}
+
+.rgb-logo {
+  animation: rgb-logo-pulse 5.5s ease-in-out infinite;
+}
