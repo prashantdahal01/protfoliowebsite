@@ -2,21 +2,27 @@ import Link from "next/link";
 
 export function NavbarPulseButton({
   href,
+  active = false,
+  onClick,
   children
 }: {
   href: string;
+  active?: boolean;
+  onClick?: () => void;
   children: React.ReactNode;
 }) {
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={[
         "group relative inline-flex items-center justify-center",
         "px-4 py-2 text-sm font-semibold tracking-[-0.01em]",
         "rounded-full border bg-white/[0.04] backdrop-blur-md",
         "transition-[transform,box-shadow,background-color,border-color,color] duration-200",
         "hover:-translate-y-[1px]",
-        "neon-cycle neon-btn"
+        "neon-cycle neon-btn",
+        active ? "border-white/40 bg-white/10" : ""
       ].join(" ")}
     >
       <span

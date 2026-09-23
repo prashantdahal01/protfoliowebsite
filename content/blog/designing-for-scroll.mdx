@@ -1,0 +1,24 @@
+---
+title: Designing for scroll without losing the plot
+date: 2026-09-12
+readTime: 4 min read
+tags: [Interaction, Performance]
+draft: true
+---
+
+> DRAFT — Replace this with the finished essay before publishing.
+
+Scroll-linked work is most useful when the motion explains the interface instead of competing with it. Start with the information hierarchy, then decide where movement can make a state change easier to understand.
+
+A resilient scroll story has three layers:
+
+1. A semantic document that makes sense without animation.
+2. A visual layer that enhances the state change.
+3. A performance budget that protects input and reading comfort.
+
+```ts
+const progress = clamp(scrollYProgress, 0, 1);
+const frame = Math.round(progress * (frameCount - 1));
+```
+
+The best result feels less like a trick and more like the natural pace of the story.

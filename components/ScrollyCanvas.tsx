@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   type MotionValue,
+  useReducedMotion,
   useMotionValueEvent,
   useTransform
 } from "framer-motion";
@@ -44,6 +45,7 @@ export function ScrollyCanvas({
 }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const latestFrameRef = useRef(0);
+  const reducedMotion = useReducedMotion();
 
   const frameUrls = useMemo(() => {
     // If you later add more frames, update the count.
@@ -58,7 +60,7 @@ export function ScrollyCanvas({
 
   const frameIndex = useTransform(
     scrollYProgress,
-    (v) => Math.round(v * (frameUrls.length - 1))
+    (v) => (reducedMotion ? 0 : Math.round(v * (frameUrls.length - 1)))
   );
 
   function render(idx: number) {

@@ -1,6 +1,9 @@
+import Link from "next/link";
+import { siteLinks } from "@/lib/site";
+
 export function Footer() {
   return (
-    <footer className="footer-laser relative mt-10 bg-[#070707]">
+    <footer id="contact" className="footer-laser relative bg-[#070707]">
       <div className="relative">
         <div className="rgb-laser" />
         <div
@@ -18,26 +21,29 @@ export function Footer() {
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-medium text-white/85">Prashant Dahal</p>
-            <p className="mt-2 max-w-md text-sm text-white/55">
+            <p className="mt-2 max-w-md text-sm leading-6 text-gray-300">
               Creative developer focused on high-performance motion and
               scroll-linked storytelling.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/70">
-            <a className="hover:text-white" href="#work">
+          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-300">
+            <a className="hover:text-white" href="/#work">
               Work
             </a>
-            <a className="hover:text-white" href="#about">
+            <a className="hover:text-white" href="/#about">
               About
             </a>
-            <a className="hover:text-white" href="#contact">
+            <Link className="hover:text-white" href="/contact">
               Contact
-            </a>
+            </Link>
+            <a className="hover:text-white" href={siteLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a className="hover:text-white" href={siteLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a className="hover:text-white" href={`mailto:${siteLinks.email}`}>Email</a>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-gray-400 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} Prashant Dahal</span>
           <span>Built with Next.js • Tailwind • Framer Motion</span>
         </div>

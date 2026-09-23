@@ -1,0 +1,5 @@
+import { testimonials } from "@/lib/testimonials";
+
+export function Testimonials() {
+  return <section className="mx-auto max-w-6xl px-6 py-24 sm:py-32"><div className="max-w-2xl"><p className="text-xs font-medium tracking-[0.22em] text-fuchsia-200">RECOMMENDATIONS</p><h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Good work should leave a useful trace.</h2></div><div className="mt-10 grid gap-5 md:grid-cols-2">{testimonials.map((testimonial) => <figure key={testimonial.name} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"><blockquote className="text-lg leading-8 text-gray-200">“{testimonial.quote}”</blockquote><figcaption className="mt-6 text-sm text-gray-400"><span className="font-semibold text-white">{testimonial.name}</span><br />{testimonial.role} · {testimonial.company}{testimonial.placeholder ? <span className="mt-3 block text-xs uppercase tracking-[0.16em] text-fuchsia-200">Placeholder — replace with verified recommendation</span> : null}</figcaption></figure>)}</div></section>;
+}
