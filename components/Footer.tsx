@@ -1,53 +1,12 @@
 import Link from "next/link";
 import { siteLinks } from "@/lib/site";
+import { ResumeDownload } from "@/components/ResumeDownload";
 
 export function Footer() {
   return (
-    <footer id="contact" className="footer-laser relative bg-[#070707]">
-      <div className="relative">
-        <div className="rgb-laser" />
-        <div
-          aria-hidden="true"
-          className="rgb-laser-glow pointer-events-none absolute left-0 right-0 top-0 h-2 opacity-0 transition-opacity duration-300"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(0,255,255,0.0), rgba(0,255,255,0.65), rgba(168,85,247,0.65), rgba(236,72,153,0.65), rgba(0,255,255,0.0))",
-            filter: "blur(20px)"
-          }}
-        />
-      </div>
-
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-sm font-medium text-white/85">Prashant Dahal</p>
-            <p className="mt-2 max-w-md text-sm leading-6 text-gray-300">
-              Creative developer focused on high-performance motion and
-              scroll-linked storytelling.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-300">
-            <a className="hover:text-white" href="/#work">
-              Work
-            </a>
-            <a className="hover:text-white" href="/#about">
-              About
-            </a>
-            <Link className="hover:text-white" href="/contact">
-              Contact
-            </Link>
-            <a className="hover:text-white" href={siteLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a className="hover:text-white" href={siteLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a className="hover:text-white" href={`mailto:${siteLinks.email}`}>Email</a>
-          </div>
-        </div>
-
-        <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-gray-400 sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} Prashant Dahal</span>
-          <span>Built with Next.js • Tailwind • Framer Motion</span>
-        </div>
-      </div>
+    <footer id="contact" className="relative overflow-hidden border-t hairline bg-[#111111] px-5 pb-8 pt-16 sm:px-8 lg:px-12">
+      <div className="pointer-events-none absolute -bottom-10 left-0 text-[23vw] font-bold leading-none tracking-[-0.1em] text-white/[0.035]">PRASHANT</div>
+      <div className="relative mx-auto max-w-[1440px]"><div className="mb-16 flex flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p className="text-xs uppercase tracking-[0.25em] text-[#d9ff4f]">Let&apos;s make something</p><h2 className="mt-5 max-w-3xl text-5xl font-bold tracking-[-0.07em] text-white sm:text-8xl">Have a good one<br /><span className="font-display font-normal italic text-white/50">in mind?</span></h2></div><Link href="/contact" className="border-b border-[#d9ff4f] pb-2 text-sm uppercase tracking-[0.18em] text-white transition hover:text-[#d9ff4f]">Send a message ↗</Link></div><div className="grid gap-10 border-t hairline pt-6 text-sm sm:grid-cols-3"><div><p className="mb-4 text-[10px] uppercase tracking-[0.22em] text-white/35">Portfolio</p><a href={siteLinks.github} target="_blank" rel="noreferrer" className="text-white/70 transition hover:text-[#d9ff4f]">GitHub ↗</a></div><div><p className="mb-4 text-[10px] uppercase tracking-[0.22em] text-white/35">Social</p><a href={siteLinks.linkedin} target="_blank" rel="noreferrer" className="text-white/70 transition hover:text-[#d9ff4f]">LinkedIn ↗</a></div><div><p className="mb-4 text-[10px] uppercase tracking-[0.22em] text-white/35">Contact</p><div className="flex flex-col items-start gap-3 text-white/70"><a href={`mailto:${siteLinks.email}`} className="transition hover:text-[#d9ff4f]">{siteLinks.email}</a><ResumeDownload /></div></div></div><div className="mt-20 flex flex-col gap-2 border-t hairline pt-5 text-[10px] uppercase tracking-[0.18em] text-white/35 sm:flex-row sm:justify-between"><span>© {new Date().getFullYear()} Prashant Dahal</span><span>Built with Next.js / Tailwind / Framer Motion</span></div></div>
     </footer>
   );
 }

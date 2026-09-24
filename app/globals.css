@@ -8,8 +8,29 @@ body {
 }
 
 body {
-  background: #121212;
+  background: #0b0b0b;
+  color: #f2f0eb;
+  overflow-x: hidden;
 }
+
+html { scroll-behavior: smooth; }
+::selection { background: #d9ff4f; color: #0b0b0b; }
+.font-display { font-family: "Bodoni 72", Didot, Georgia, serif; }
+.site-shell { background: #0b0b0b; }
+.hairline { border-color: rgba(242, 240, 235, 0.16); }
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body { cursor: none; }
+  a, button { cursor: none; }
+}
+
+@media (pointer: coarse) { .cursor-layer { display: none !important; } }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 24s linear infinite; width: max-content; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes scroll-cue { 0%, 100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(7px); opacity: 1; } }
+.scroll-cue { animation: scroll-cue 1.8s ease-in-out infinite; }
 
 .light body,
 .light .bg-ink {
@@ -53,6 +74,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track, .scroll-cue { animation: none; }
   *,
   *::before,
   *::after {

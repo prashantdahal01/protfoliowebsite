@@ -9,7 +9,7 @@ export default {
         ink: "#121212"
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"]
+        sans: ["Avenir Next", "Helvetica Neue", "Helvetica", "sans-serif"]
       }
     }
   },

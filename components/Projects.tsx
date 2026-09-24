@@ -1,70 +1,26 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import { projects, type Project } from "@/lib/projects";
 
 export function Projects({ items = projects }: { items?: Project[] }) {
   return (
-    <section id="work" className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
-      <div className="flex items-end justify-between gap-6">
+    <section id="work" className="relative mx-auto max-w-[1440px] px-5 py-28 sm:px-8 sm:py-36 lg:px-12">
+      <div className="flex items-end justify-between gap-6 border-b hairline pb-6">
         <div>
-          <p className="text-xs font-medium tracking-[0.26em] text-gray-300">SELECTED WORK</p>
-          <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-            Projects & case studies
-          </h2>
-          <p className="mt-3 max-w-2xl text-pretty text-sm text-gray-300 sm:text-base">
-            A small set of work spanning motion systems, scroll-linked
-            storytelling, and product UI.
-          </p>
+          <p className="text-xs uppercase tracking-[0.25em] text-[#d9ff4f]">02 / Selected work</p>
+          <h2 className="mt-5 text-5xl font-bold tracking-[-0.06em] text-white sm:text-7xl">Snap-shots<span className="text-[#d9ff4f]">.</span></h2>
         </div>
-        <a
-          href="/projects"
-          className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-md transition hover:border-white/20 hover:bg-white/10 sm:inline-flex"
-        >
-          View all
-        </a>
+        <Link href="/projects" className="hidden text-xs uppercase tracking-[0.18em] text-white/60 transition hover:text-[#d9ff4f] sm:block">View archive ↗</Link>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {items.map((p) => (
-          <article
-            key={p.title}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-lg shadow-black/20 backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-cyan-200/40 hover:bg-white/[0.07] hover:shadow-cyan-950/40"
-          >
-            <div className="pointer-events-none absolute -inset-24 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100">
-              <div className="absolute left-1/3 top-1/3 h-44 w-44 rounded-full bg-cyan-400/10" />
-              <div className="absolute right-1/3 bottom-1/3 h-44 w-44 rounded-full bg-violet-500/10" />
-            </div>
-
-            <div className="relative">
-              <a href={p.demoHref} aria-label={`View ${p.title} case study`} className="block overflow-hidden rounded-xl border border-white/10">
-                <Image src={p.image} alt={`${p.title} project preview`} width={1280} height={720} className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105" />
-              </a>
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-balance text-xl font-semibold tracking-tight">
-                  {p.title}
-                </h3>
-                <a href={p.demoHref} className="mt-1 text-cyan-200 transition hover:text-white" aria-label={`Open ${p.title} demo`}>↗</a>
-              </div>
-              <p className="mt-3 text-pretty text-sm leading-6 text-gray-300">
-                {p.description}
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-cyan-200/20 bg-cyan-200/10 px-3 py-1 text-xs font-medium text-cyan-100"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-6 flex gap-4 text-sm font-medium">
-                <a href={p.demoHref} className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">Live demo</a>
-                <a href={p.githubHref} target="_blank" rel="noreferrer" className="text-gray-300 underline decoration-white/20 underline-offset-4 hover:text-white">GitHub</a>
-              </div>
-            </div>
-          </article>
-        ))}
+      <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-16 md:grid-cols-2">
+        {items.map((p, index) => <motion.article key={p.title} initial={{ opacity: 1, y: 0 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} className={`group ${index % 2 === 1 ? "md:mt-28" : ""}`}>
+          <Link href={p.demoHref} className="relative block overflow-hidden bg-[#202020]" aria-label={`View ${p.title} case study`}><Image src={p.image} alt={`${p.title} project preview`} width={1280} height={720} className="aspect-[1.35/1] w-full object-cover transition duration-700 group-hover:scale-105 group-hover:brightness-[0.45]" /><div className="absolute inset-0 flex flex-col justify-between p-5 opacity-0 transition duration-500 group-hover:opacity-100 sm:p-7"><span className="self-end text-xs uppercase tracking-[0.2em] text-[#d9ff4f]">View project ↗</span><div><p className="text-xs uppercase tracking-[0.2em] text-white/70">{p.tags[0]} / {p.tags[1]}</p><h3 className="mt-2 max-w-md text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">{p.title}</h3></div></div></Link>
+          <div className="mt-4 flex items-start justify-between gap-5 border-t hairline pt-4"><div><h3 className="text-lg font-medium text-white">{p.title}</h3><p className="mt-1 text-sm text-white/45">{p.description}</p></div><span className="text-xs text-white/35">0{index + 1}</span></div>
+        </motion.article>)}
       </div>
     </section>
   );

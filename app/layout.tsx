@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { PageTransition } from "@/components/PageTransition";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Footer } from "@/components/Footer";
+import { CustomCursor } from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://prashantdahal.dev"),
@@ -39,6 +40,7 @@ export default function RootLayout({
           <Header />
           <PageTransition>{children}</PageTransition>
           <Footer />
+          <CustomCursor />
           <ScrollToTop />
           <Analytics />
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />

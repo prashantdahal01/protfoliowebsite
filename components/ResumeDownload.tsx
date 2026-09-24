@@ -27,5 +27,5 @@ export function ResumeDownload() {
     document.save("prashant-dahal-resume.pdf");
   }
 
-  return <button type="button" onClick={downloadResume} className="inline-flex rounded-full bg-cyan-200 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-white">Download resume PDF</button>;
+  return <button type="button" onClick={downloadResume} className="inline-flex border-b border-white/35 pb-1 text-sm text-white/75 transition hover:border-[#d9ff4f] hover:text-[#d9ff4f]">Download CV ↓</button>;
 }
